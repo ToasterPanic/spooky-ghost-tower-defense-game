@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://yicge48108e0"]
+[gd_scene load_steps=30 format=3 uid="uid://yicge48108e0"]
 
 [ext_resource type="Script" uid="uid://dy074nunrs5v3" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://b2thkk48bp8f" path="res://textures/grass.png" id="1_uwrxv"]
+[ext_resource type="AudioStream" uid="uid://jcgsu1suluew" path="res://sounds/music.ogg" id="2_ca42v"]
 [ext_resource type="Script" uid="uid://cahnhtrrxxoja" path="res://scripts/player.gd" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://r424uqcbavjy" path="res://textures/creature.png" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://cwebgf6djls5n" path="res://textures/basic_turret.png" id="3_0tnpc"]
@@ -15,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://4qd2uf32hwdg" path="res://textures/knife_turret.png" id="11_dinhu"]
 [ext_resource type="Texture2D" uid="uid://d0ba616saj3pp" path="res://textures/rocket_turret.png" id="12_kvuet"]
 [ext_resource type="Texture2D" uid="uid://doghnkfvjhwd" path="res://textures/sniper_turret.png" id="13_trtic"]
+
+[sub_resource type="SystemFont" id="SystemFont_ca42v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqjtg"]
 albedo_texture = ExtResource("1_uwrxv")
@@ -62,6 +65,27 @@ font_size = 64
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_lbhrr")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ca42v")
+autoplay = true
+parameters/looping = true
+
+[node name="Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.5, 0)
+billboard = 1
+alpha_cut = 3
+texture_filter = 1
+text = "ENTRANCE"
+font = SubResource("SystemFont_ca42v")
+
+[node name="Label2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1.5, 0)
+billboard = 1
+alpha_cut = 3
+texture_filter = 1
+text = "EXIT"
+font = SubResource("SystemFont_ca42v")
 
 [node name="PathNodes" type="Node3D" parent="."]
 

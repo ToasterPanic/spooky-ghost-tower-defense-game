@@ -11,11 +11,18 @@ var ghost_scene = preload("res://scenes/ghost.tscn")
 
 @onready var player = $Player
 
+func _ready() -> void:
+	for n in $PathNodes.get_children():
+		n.visible = false
+
 func _on_resume_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$CanvasLayer/Control/PauseMenu.visible = false
 
 func _process(delta: float) -> void:
+	if !$CanvasLayer/Control/PauseMenu.visible:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
 	time += delta 
 	if time_until_next_wave > 0:
 		current_wave_section = 0
@@ -82,8 +89,6 @@ func _process(delta: float) -> void:
 		$CanvasLayer/Control/InfoPanel.visible = false
 		
 		var collider = $Player/Raycast.get_collider()
-		
-		print(collider)
 		
 		if collider:
 			if collider.has_meta("enemy"):

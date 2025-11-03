@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://hhybejs82qhl"]
+[gd_scene load_steps=17 format=3 uid="uid://hhybejs82qhl"]
 
 [ext_resource type="Script" uid="uid://cs5alh4cabx0x" path="res://scripts/title_screen.gd" id="1_e54dn"]
 [ext_resource type="Texture2D" uid="uid://b2thkk48bp8f" path="res://textures/grass.png" id="1_s4lrb"]
+[ext_resource type="AudioStream" uid="uid://do4crr160lqci" path="res://sounds/music2.ogg" id="2_3yumr"]
 [ext_resource type="Texture2D" uid="uid://bb3a0kp7c6di4" path="res://textures/orang.png" id="2_mgrm8"]
 [ext_resource type="Texture2D" uid="uid://c0efjw1t08hqm" path="res://textures/path.png" id="3_dc4i4"]
 [ext_resource type="Texture2D" uid="uid://dlgp3b0ew0gn0" path="res://textures/ghost.png" id="4_mgrm8"]
@@ -39,8 +40,18 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_e54dn"]
 font_size = 24
 
+[sub_resource type="LabelSettings" id="LabelSettings_3yumr"]
+font_size = 12
+shadow_size = 12
+shadow_color = Color(0, 0, 0, 1)
+
 [node name="TitleScreen" type="Node3D"]
 script = ExtResource("1_e54dn")
+
+[node name="Music2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3yumr")
+autoplay = true
+parameters/looping = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, -2)
@@ -269,7 +280,12 @@ autowrap_mode = 3
 layout_mode = 2
 text = "Sorry if this game is lackluster. I've been out of commision for most of the week because of medical problems (I had to spend my weekend in the hospital!)
 
-This is my first 3D game in the Godot engine. Learned a lot, and now I should be able to make more games in 3D. Very nice."
+This is my first 3D game in the Godot engine. Learned a lot, and now I should be able to make more games in 3D. Very nice.
+
+Shotgun Blast by Jim Rogers is licensed under the Creative Commons Attribution 3.0 license.
+Gun Fire by GoodSoundForYou is licensed under the Creative Commons Attribution 3.0 license.
+Sword Swing by karim nessim from Pixabay"
+label_settings = SubResource("LabelSettings_3yumr")
 autowrap_mode = 3
 
 [node name="CloseAllPanels" type="Button" parent="CanvasLayer/Control/Credits"]

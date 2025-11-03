@@ -18,7 +18,7 @@ func _ready() -> void:
 	elif type == "tanky_ghost":
 		set_meta("max_health", 7)
 	elif type == "tank_ghost":
-		set_meta("max_health", 100)
+		set_meta("max_health", 300)
 	
 	set_meta("max_health", get_meta("max_health") * ((get_parent().get_parent().current_wave + 6) / 6))
 		
@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 		next_node = get_parent().get_parent().get_node("PathNodes/Node" + str(node_number))
 		
 		if next_node == null:
-			queue_free()
+			get_tree().change_scene_to_file("res://scenes/game.tscn")
 			
 			return
 			

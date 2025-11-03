@@ -39,6 +39,15 @@ func _process(delta: float) -> void:
 			$Crosshair.global_position = n.global_position
 			
 			if fire:
+				if type == 1:
+					$Basic.play()
+				elif type == 2:
+					$Knife.play()
+				elif type == 3:
+					$Sniper.play()
+				elif type == 4:
+					$Sniper.play()
+					
 				n.set_meta("health", n.get_meta("health") - global.stats[type][upgrade].damage)
 				
 			return

@@ -9,7 +9,7 @@ var hotbar = [
 	"turret_4",
 ]
 var selected_item = 0
-var money = 500
+var money = 50
 
 var turret_scene = preload("res://scenes/turret.tscn")
 

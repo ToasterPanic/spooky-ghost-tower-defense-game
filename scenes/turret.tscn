@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1uwu4o13cud"]
+[gd_scene load_steps=20 format=3 uid="uid://d1uwu4o13cud"]
 
 [ext_resource type="Script" uid="uid://bvbpj6bms27ol" path="res://scripts/turret.gd" id="1_el7wl"]
 [ext_resource type="Texture2D" uid="uid://cwebgf6djls5n" path="res://textures/basic_turret.png" id="2_485p4"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://uuv5y8008010" path="res://textures/sniper_turret_2.png" id="12_8c4bs"]
 [ext_resource type="Texture2D" uid="uid://byj4rq4hw3y8n" path="res://textures/sniper_turret_3.png" id="13_0mdkh"]
 [ext_resource type="Texture2D" uid="uid://dtmts72dmsea1" path="res://textures/crosshair.png" id="14_8c4bs"]
+[ext_resource type="AudioStream" uid="uid://c0ijg16y2fqb1" path="res://sounds/sniper.wav" id="15_0mdkh"]
+[ext_resource type="AudioStream" uid="uid://cya32sakaj6a" path="res://sounds/basic.wav" id="16_ue5km"]
+[ext_resource type="AudioStream" uid="uid://1h21hyp27bx3" path="res://sounds/knife.mp3" id="17_mpvso"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lnu2h"]
 radius = 0.25
@@ -117,3 +120,20 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
 shape = SubResource("SphereShape3D_0tnpc")
+
+[node name="Sniper" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_0mdkh")
+volume_db = -8.0
+pitch_scale = 2.0
+max_polyphony = 4
+
+[node name="Basic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_ue5km")
+volume_db = -6.0
+pitch_scale = 2.0
+max_polyphony = 4
+
+[node name="Knife" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_mpvso")
+volume_db = 8.0
+max_polyphony = 4
