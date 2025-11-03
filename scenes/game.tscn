@@ -1,10 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://yicge48108e0"]
+[gd_scene load_steps=28 format=3 uid="uid://yicge48108e0"]
 
 [ext_resource type="Script" uid="uid://dy074nunrs5v3" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://b2thkk48bp8f" path="res://textures/grass.png" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cahnhtrrxxoja" path="res://scripts/player.gd" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://r424uqcbavjy" path="res://textures/creature.png" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://cwebgf6djls5n" path="res://textures/basic_turret.png" id="3_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://c0efjw1t08hqm" path="res://textures/path.png" id="3_p57ef"]
+[ext_resource type="Texture2D" uid="uid://bb3a0kp7c6di4" path="res://textures/orang.png" id="3_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://bbi4b41ud3jn0" path="res://textures/viewmodels/fist.png" id="5_iywne"]
+[ext_resource type="Texture2D" uid="uid://otv0lb5rtrsu" path="res://textures/placement_arrow.png" id="9_ca42v"]
+[ext_resource type="Texture2D" uid="uid://ucef3cn1r8d0" path="res://textures/viewmodels/turret_1.png" id="10_ir15t"]
+[ext_resource type="Texture2D" uid="uid://c8ag7dxrc5sp6" path="res://textures/fist.png" id="10_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://dfdd1pyyd4cet" path="res://textures/viewmodels/turret_2.png" id="11_ca42v"]
+[ext_resource type="Texture2D" uid="uid://4qd2uf32hwdg" path="res://textures/knife_turret.png" id="11_dinhu"]
+[ext_resource type="Texture2D" uid="uid://d0ba616saj3pp" path="res://textures/rocket_turret.png" id="12_kvuet"]
+[ext_resource type="Texture2D" uid="uid://doghnkfvjhwd" path="res://textures/sniper_turret.png" id="13_trtic"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqjtg"]
 albedo_texture = ExtResource("1_uwrxv")
@@ -12,24 +22,388 @@ uv1_offset = Vector3(0.5, 0, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gee14"]
+albedo_texture = ExtResource("3_u5sy4")
+uv1_offset = Vector3(0.5, 0, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5sy4"]
+albedo_texture = ExtResource("3_p57ef")
+uv1_offset = Vector3(0.5, 0, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir15t"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lnu2h"]
 radius = 0.25
-height = 1.0
+height = 0.95
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ir15t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0tnpc"]
+font_size = 48
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ir15t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lnu2h"]
 font_size = 64
 
+[sub_resource type="Environment" id="Environment_u5sy4"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_gee14"]
+
+[sub_resource type="Compositor" id="Compositor_0tnpc"]
+
 [node name="Game" type="Node3D"]
 script = ExtResource("1_lbhrr")
 
+[node name="PathNodes" type="Node3D" parent="."]
+
+[node name="Node1" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1.5, 0)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node2" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 0)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node3" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, -4)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node4" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, -4)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node5" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, -8)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node6" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, -8)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node7" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 4)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node8" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 4)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node9" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, -8)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node10" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1.5, -8)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node11" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1.5, -3)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node12" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, -3)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node13" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, 0)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Node14" type="Label3D" parent="PathNodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1.5, 0)
+billboard = 1
+shaded = true
+alpha_cut = 3
+texture_filter = 1
+text = "path node"
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Turrets" type="Node3D" parent="."]
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, -2)
 use_collision = true
-size = Vector3(15, 1, 15)
+size = Vector3(22, 1, 19)
 material = SubResource("StandardMaterial3D_yqjtg")
 
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 4.5)
+use_collision = true
+collision_layer = 5
+size = Vector3(1, 2, 6)
+material = SubResource("StandardMaterial3D_gee14")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -6.5)
+use_collision = true
+collision_layer = 5
+size = Vector3(1, 2, 10)
+material = SubResource("StandardMaterial3D_gee14")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 4.5)
+use_collision = true
+collision_layer = 5
+size = Vector3(1, 2, 6)
+material = SubResource("StandardMaterial3D_gee14")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, -6.5)
+use_collision = true
+collision_layer = 5
+size = Vector3(1, 2, 10)
+material = SubResource("StandardMaterial3D_gee14")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, -12)
+use_collision = true
+collision_layer = 5
+size = Vector3(24, 2, 1)
+material = SubResource("StandardMaterial3D_gee14")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 8)
+use_collision = true
+collision_layer = 5
+size = Vector3(24, 2, 1)
+material = SubResource("StandardMaterial3D_gee14")
+
+[node name="Entrance" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, 1)
+use_collision = true
+collision_layer = 5
+size = Vector3(5, 1, 1)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Entrance2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, -1)
+use_collision = true
+collision_layer = 5
+size = Vector3(5, 1, 1)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Entrance5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, 0)
+use_collision = true
+collision_layer = 4
+collision_mask = 0
+size = Vector3(5, 1, 1)
+material = SubResource("StandardMaterial3D_ir15t")
+
+[node name="Entrance6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1.5, 0)
+use_collision = true
+collision_layer = 4
+collision_mask = 0
+size = Vector3(5, 1, 1)
+material = SubResource("StandardMaterial3D_ir15t")
+
+[node name="Entrance3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.5, 0)
+use_collision = true
+size = Vector3(5, 1, 3)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Entrance4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
+use_collision = true
+size = Vector3(5, 1, 3)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Exit" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1.5, 1)
+use_collision = true
+collision_layer = 5
+size = Vector3(5, 1, 1)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Exit2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1.5, -1)
+use_collision = true
+collision_layer = 5
+size = Vector3(5, 1, 1)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Exit3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 2.5, 0)
+use_collision = true
+size = Vector3(5, 1, 3)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Exit4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.5, 0)
+use_collision = true
+size = Vector3(5, 1, 3)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.007147, -8)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(6, 0.014293945, 1)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.007147, -4)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(4, 0.014293945, 1)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path13" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1.007147, 0)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(7, 0.014293945, 1)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path12" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.007147, -1)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(1, 0.014293945, 3)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path11" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.007147, -3)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(4, 0.014293945, 1)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path10" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1.007147, -5.5)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(1, 0.014293945, 6)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path9" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.007147, -8)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(5, 0.014293945, 1)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path8" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.007147, -2.5)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(1, 0.014293945, 12)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.007147, 4)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(4, 0.014293945, 1)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.007147, -1.5)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(1, 0.014293945, 12)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.007147, -6)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(1, 0.014293945, 3)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.007147, -2)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(1, 0.014293945, 3)
+material = SubResource("StandardMaterial3D_u5sy4")
+
+[node name="Path" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.007147, 0)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(7, 0.014293945, 1)
+material = SubResource("StandardMaterial3D_u5sy4")
+
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+collision_mask = 5
 script = ExtResource("2_lnu2h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -41,8 +415,27 @@ transform = Transform3D(0.333, 0, 0, 0, 0.333, 0, 0, 0, 0.333, 0, 0, 0)
 billboard = 1
 texture = ExtResource("2_yqjtg")
 
+[node name="PlacementArrow" type="Sprite3D" parent="Player"]
+transform = Transform3D(0.333, 0, 0, 0, 0.333, 0, 0, 0, 0.333, 0, 0, -1)
+billboard = 1
+texture = ExtResource("9_ca42v")
+
 [node name="Camera" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+current = true
+
+[node name="Area" type="Area3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21, -1)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area"]
+shape = SubResource("SphereShape3D_ir15t")
+
+[node name="Raycast" type="RayCast3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.25, 0)
+target_position = Vector3(0, -2.5, 0)
+collision_mask = 18
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -54,18 +447,105 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Viewmodel" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="WaveLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -123.5
+offset_right = 123.5
+offset_bottom = 88.0
+grow_horizontal = 2
+text = "WAVE 1"
+label_settings = SubResource("LabelSettings_0tnpc")
+horizontal_alignment = 1
+
+[node name="Moneys" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -247.0
+offset_bottom = 88.0
+grow_horizontal = 0
+text = "$50"
+label_settings = SubResource("LabelSettings_0tnpc")
+horizontal_alignment = 2
+
+[node name="ControlTips" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+offset_right = 247.0
+grow_vertical = 0
+text = "[Scroll Wheel] Select Item
+[Left Click] Use Held Item
+[TAB] Start Wave Now"
+label_settings = SubResource("LabelSettings_ir15t")
+vertical_alignment = 2
+
+[node name="Viewmodel" type="Control" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 552.0
+offset_top = 48.0
+offset_right = 552.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fist" type="TextureRect" parent="CanvasLayer/Control/Viewmodel"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -600.0
-offset_top = -600.0
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = -552.0
+offset_bottom = -48.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("5_iywne")
+expand_mode = 1
+
+[node name="turret_1" type="TextureRect" parent="CanvasLayer/Control/Viewmodel"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = -552.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("10_ir15t")
+expand_mode = 1
+
+[node name="turret_2" type="TextureRect" parent="CanvasLayer/Control/Viewmodel"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = -552.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("11_ca42v")
 expand_mode = 1
 
 [node name="PauseMenu" type="ColorRect" parent="CanvasLayer/Control"]
@@ -102,16 +582,88 @@ label_settings = SubResource("LabelSettings_lnu2h")
 layout_mode = 2
 text = "Resume"
 
-[node name="Settings" type="Button" parent="CanvasLayer/Control/PauseMenu/Container"]
-layout_mode = 2
-text = "Settings"
+[node name="Hotbar" type="Panel" parent="CanvasLayer/Control"]
+custom_minimum_size = Vector2(64, 336)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
 
-[node name="Credits" type="Button" parent="CanvasLayer/Control/PauseMenu/Container"]
-layout_mode = 2
-text = "Credits & Extras"
+[node name="Container" type="VBoxContainer" parent="CanvasLayer/Control/Hotbar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="QuitGame" type="Button" parent="CanvasLayer/Control/PauseMenu/Container"]
+[node name="fist" type="TextureRect" parent="CanvasLayer/Control/Hotbar/Container"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-text = "Quit Game"
+texture = ExtResource("10_kvpfn")
+expand_mode = 1
+
+[node name="turret_1" type="TextureRect" parent="CanvasLayer/Control/Hotbar/Container"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_0tnpc")
+expand_mode = 1
+
+[node name="turret_2" type="TextureRect" parent="CanvasLayer/Control/Hotbar/Container"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_dinhu")
+expand_mode = 1
+
+[node name="turret_3" type="TextureRect" parent="CanvasLayer/Control/Hotbar/Container"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("12_kvuet")
+expand_mode = 1
+
+[node name="turret_4" type="TextureRect" parent="CanvasLayer/Control/Hotbar/Container"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("13_trtic")
+expand_mode = 1
+
+[node name="InfoPanel" type="Panel" parent="CanvasLayer/Control"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -72.0
+offset_right = 128.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/Control/InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[b]Basic Turret[/b]
+$50
+test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u5sy4")
+camera_attributes = SubResource("CameraAttributesPractical_gee14")
+compositor = SubResource("Compositor_0tnpc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.48862374, 0.7658173, -0.41805583, -0.33677706, 0.60756195, 0.7193398, 0.80487764, -0.21069485, 0.5547789, 0, 7, 0)
+light_energy = 0.333
+shadow_enabled = true
 
 [connection signal="pressed" from="CanvasLayer/Control/PauseMenu/Container/Resume" to="." method="_on_resume_pressed"]

@@ -1,0 +1,294 @@
+[gd_scene load_steps=15 format=3 uid="uid://hhybejs82qhl"]
+
+[ext_resource type="Script" uid="uid://cs5alh4cabx0x" path="res://scripts/title_screen.gd" id="1_e54dn"]
+[ext_resource type="Texture2D" uid="uid://b2thkk48bp8f" path="res://textures/grass.png" id="1_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://bb3a0kp7c6di4" path="res://textures/orang.png" id="2_mgrm8"]
+[ext_resource type="Texture2D" uid="uid://c0efjw1t08hqm" path="res://textures/path.png" id="3_dc4i4"]
+[ext_resource type="Texture2D" uid="uid://dlgp3b0ew0gn0" path="res://textures/ghost.png" id="4_mgrm8"]
+[ext_resource type="Texture2D" uid="uid://ch1172ye7m04b" path="res://textures/fast_ghost.png" id="5_dc4i4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e54dn"]
+albedo_texture = ExtResource("1_s4lrb")
+uv1_offset = Vector3(0.5, 0, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yumr"]
+albedo_texture = ExtResource("2_mgrm8")
+uv1_offset = Vector3(0.5, 0, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cs5ya"]
+albedo_texture = ExtResource("3_dc4i4")
+uv1_offset = Vector3(0.5, 0, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="Environment" id="Environment_mykxm"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_tklts"]
+
+[sub_resource type="Compositor" id="Compositor_u26n3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dc4i4"]
+font_size = 64
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e54dn"]
+font_size = 24
+
+[node name="TitleScreen" type="Node3D"]
+script = ExtResource("1_e54dn")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, -2)
+use_collision = true
+size = Vector3(22, 1, 19)
+material = SubResource("StandardMaterial3D_e54dn")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 4.5)
+use_collision = true
+size = Vector3(1, 2, 6)
+material = SubResource("StandardMaterial3D_3yumr")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -6.5)
+use_collision = true
+size = Vector3(1, 2, 10)
+material = SubResource("StandardMaterial3D_3yumr")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 8)
+use_collision = true
+size = Vector3(24, 2, 1)
+material = SubResource("StandardMaterial3D_3yumr")
+
+[node name="Entrance2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, -1)
+use_collision = true
+size = Vector3(5, 1, 1)
+material = SubResource("StandardMaterial3D_cs5ya")
+
+[node name="Entrance5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, 1)
+use_collision = true
+size = Vector3(5, 1, 1)
+material = SubResource("StandardMaterial3D_cs5ya")
+
+[node name="Entrance3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.5, 0)
+use_collision = true
+size = Vector3(5, 1, 3)
+material = SubResource("StandardMaterial3D_cs5ya")
+
+[node name="Entrance4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
+use_collision = true
+size = Vector3(5, 1, 3)
+material = SubResource("StandardMaterial3D_cs5ya")
+
+[node name="Path" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.007147, 0)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(7, 0.014293945, 1)
+material = SubResource("StandardMaterial3D_cs5ya")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Path"]
+environment = SubResource("Environment_mykxm")
+camera_attributes = SubResource("CameraAttributesPractical_tklts")
+compositor = SubResource("Compositor_u26n3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Path"]
+transform = Transform3D(0.48862374, 0.7658173, -0.41805583, -0.33677706, 0.60756195, 0.7193398, 0.80487764, -0.21069485, 0.5547789, 0, 7, 0)
+light_energy = 0.333
+shadow_enabled = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8, 2, 2)
+billboard = 1
+texture = ExtResource("4_mgrm8")
+
+[node name="Sprite3D4" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8, 2, 9)
+billboard = 1
+texture = ExtResource("5_dc4i4")
+
+[node name="Sprite3D5" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -7.855, 1.5, 0)
+billboard = 1
+texture = ExtResource("5_dc4i4")
+
+[node name="Sprite3D6" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3, 1.5, 4)
+billboard = 1
+texture = ExtResource("4_mgrm8")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9, 2, 6)
+billboard = 1
+texture = ExtResource("4_mgrm8")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5, 2, 9)
+billboard = 1
+texture = ExtResource("4_mgrm8")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.9063078, 0.09147134, 0.41260052, 0, 0.976296, -0.21643962, -0.42261827, -0.19616091, -0.8848247, -4.03, 1.215, -1.605)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "SPOOKY GHOST
+TOWER DEFENSE"
+label_settings = SubResource("LabelSettings_dc4i4")
+horizontal_alignment = 1
+
+[node name="PlayGame" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="ExtrasCredits" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Extras & Credits"
+
+[node name="Settings" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="Settings" type="Panel" parent="CanvasLayer/Control"]
+visible = false
+custom_minimum_size = Vector2(360, 360)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -180.0
+offset_right = 180.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/Settings/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_e54dn")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Settings/VBoxContainer"]
+layout_mode = 2
+text = "Nothing to see here..."
+autowrap_mode = 3
+
+[node name="CloseAllPanels" type="Button" parent="CanvasLayer/Control/Settings"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"
+
+[node name="Credits" type="Panel" parent="CanvasLayer/Control"]
+visible = false
+custom_minimum_size = Vector2(360, 360)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/Credits/VBoxContainer"]
+layout_mode = 2
+text = "Extras & Credits"
+label_settings = SubResource("LabelSettings_e54dn")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Credits/VBoxContainer"]
+layout_mode = 2
+text = "Sorry if this game is lackluster. I've been out of commision for most of the week because of medical problems (I had to spend my weekend in the hospital!)
+
+This is my first 3D game in the Godot engine. Learned a lot, and now I should be able to make more games in 3D. Very nice."
+autowrap_mode = 3
+
+[node name="CloseAllPanels" type="Button" parent="CanvasLayer/Control/Credits"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"
+
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/ExtrasCredits" to="." method="_on_extras_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Settings/CloseAllPanels" to="." method="_on_close_all_panels_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Credits/CloseAllPanels" to="." method="_on_close_all_panels_pressed"]
